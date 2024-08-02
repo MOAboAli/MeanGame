@@ -16,6 +16,7 @@ export interface GameInterface {
 
 export class Game implements GameInterface {
     constructor(
+        public _id: string,
         public title: string,
         public year: number,
         public rate?: number,
