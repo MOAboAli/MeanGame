@@ -43,7 +43,7 @@ const reviewSchema = mongoose.Schema({
         type: Date,
         required: false,
     },
-}, { _id: false });
+}, { _id: true });
 
 
 
@@ -85,3 +85,4 @@ const gameSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.model(process.env.FirstMODEL, gameSchema, process.env.Firstcollection);
+
