@@ -53,7 +53,7 @@ module.exports.deletegetOneitembyid = function (req, res) {
     itemModel.findById({ _id: new ObjectId(req.params.id) }).select("reviews").then((Data) => {
         if (Data == null)
             throw new Error("Main Document is not found.");
-        const Index = Data.reviews.findIndex(a => a._id.toString() === new ObjectId(req.params.reviewid));
+        const Index = Data.reviews.findIndex(a => a._id.toString() === req.params.reviewid);
         if (Index == -1)
             throw new Error("Sub Document is not found.");
         Data.reviews.splice(Index, 1);
