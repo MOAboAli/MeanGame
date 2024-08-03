@@ -8,6 +8,10 @@ const ReviewsController = require("./Controllers/review_controller.js");
 
 
 //Games
+
+router.route("/GeoSearch")
+    .get(Controller.getGeoSearch)
+
 router.route("/")
     .get(Controller.getAllitems)
     .post(Controller.createitem);
@@ -17,6 +21,8 @@ router.route("/:id")
     .delete(Controller.deletegetOneitembyid)
     .put(Controller.fullupdateeitem)
     .patch(Controller.partialupdateeitem)
+
+
 
 
 //Games/Publisher

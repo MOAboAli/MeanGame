@@ -80,3 +80,51 @@ exports.partialupdateeitem = function (req, res) {
 }
 
 
+// GEO Search
+exports.getGeoSearch = function (req, res) {
+    console.log(req.query);
+    if (req.query && req.query.lat && req.query.lng) {
+        _runGeoQuery(req, res);
+        return;
+    }
+    else {
+        res.status(404).json("message: No Params were sent.");
+    }
+}
+
+const _runGeoQuery = function (req, res) {
+    const lng = parseFloat(req.query.lng);
+    const lat = parseFloat(req.query.lat);
+    const max = parseFloat(req.query.max);
+    const min = parseFloat(req.query.min);
+    //Geo JSON Point
+    const point = { type: "Point", coordinates: [lng, lat] };
+    const query = {
+        "publisher.location.coordinates": {
+            $near: {
+                $geometry: point,
+                $maxDistance: parseFloat(max ?? 500000, 10),
+                $minDistance: parseFloat(min ?? 0, 10)
+            }
+        }
+    };
+
+    itemModel.find(query).limit(parseFloat(50, 10)).then((data) => {
+        res.status(200).json(data);
+    }).catch((error) => {
+        res.status(401).json(error);
+    });
+
+
+    // .exec(function
+    //     (err, games) {
+    //     if (err) {
+    //         console.log("Geo error ", err);
+    //         res.status(401).json(err);
+    //     }
+    //     else {
+    //         console.log("Geo results", games);
+    //         res.status(200).json(games);
+    //     }
+    // });
+}

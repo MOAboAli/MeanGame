@@ -12,6 +12,7 @@ const publisherSchema = mongoose.Schema({
         coordinates: {
             type: [Number],
             required: false,
+            index: "2dsphere"
         },
     },
     country: {
