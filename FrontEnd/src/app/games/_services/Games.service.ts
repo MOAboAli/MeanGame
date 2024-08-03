@@ -16,8 +16,14 @@ export class GamesService {
 
 
   public getOneGames(_id: string): Observable<Game> {
-    console.log("http://localhost:8484/api/games/" + _id)
     return this.http.get<Game>("http://localhost:8484/api/games/" + _id);
   }
 
+  public CreateGames(Body: Game): Observable<Object> {
+    return this.http.post("http://localhost:8484/api/games", Body);
+  }
+
+  public UpdateGames(_id: string, Body: Game): Observable<Object> {
+    return this.http.patch("http://localhost:8484/api/games/" + _id, Body);
+  }
 }

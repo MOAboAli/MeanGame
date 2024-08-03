@@ -9,7 +9,7 @@ export interface PublisherInterface {
 
 export class Publisher implements PublisherInterface {
     constructor(
-        public _id: string,
+        public _id?: string,
         public name?: string,
         public location?: { coordinates?: number[] },
         public country?: string,

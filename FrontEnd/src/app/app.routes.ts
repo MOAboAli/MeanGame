@@ -4,6 +4,7 @@ import { GamesComponent } from './games/games.component';
 import { SingleGameComponent } from './games/single-game/single-game.component';
 import { ErrorPageComponent } from './_utility_components/error-page/error-page.component';
 import { CreategameComponent } from './games/creategame/creategame.component';
+import { UpdategameComponent } from './games/updategame/updategame.component';
 
 export const routes: Routes = [
     {
@@ -18,6 +19,9 @@ export const routes: Routes = [
     },
     {
         path: "games/game/:id", component: SingleGameComponent
+    },
+    {
+        path: "games/game/update/:id", component: UpdategameComponent
     },
     {
         path: "games/Create", component: CreategameComponent

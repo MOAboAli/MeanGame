@@ -1,19 +1,28 @@
 require("dotenv").config();
-require("./db.js")
+require("./db.js");
+const cors = require('cors');
 const express = require("express");
 const route = require("./router.js");
 
 
 
 
+
 const app = express();
 
-app.use("/api", function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-});
+// app.use("/api", function (req, res, next) {
+//     res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//     next();
+// });
 
+const corsOptions = {
+    origin: 'http://localhost:4200',
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

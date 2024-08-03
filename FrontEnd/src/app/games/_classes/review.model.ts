@@ -7,7 +7,7 @@ export interface ReviewInterface {
 
 export class Review implements ReviewInterface {
     constructor(
-        public _id: string,
+        public _id?: string,
         public title?: string,
         public rating?: number,
         public review?: string,

@@ -1,6 +1,6 @@
 <div class="row p-3">
     <div class="col-md-12 col-sm-12 col-12">
-        <h3>Creat A New Game</h3>
+        <h3>Update A Game</h3>
     </div>
 </div>
 <hr />
@@ -71,13 +71,29 @@
                         </div>
 
                     </div>
+
+                    <!-- <div *ngFor="let designer of Game?.designers; let i=index">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-8 col-8">
+                                <input [formControlName]="i" class="form-control mt-2">
+
+                            </div>
+                            <div class="col-md-6 col-sm-4 col-4">
+                                <button type="button" class="btn btn-danger mt-1"
+                                    (click)="removeDesigner(i)">Remove</button>
+                            </div>
+                        </div>
+
+                    </div> -->
+
                 </div>
             </div>
         </div>
         <br><br>
         <div class="row">
             <div class="col-md-12 col-sm-12 col-12 text-center">
-                <button type="submit" class="btn btn-primary mt-3" [disabled]="gameForm.invalid">Submit</button>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                <!-- [disabled]="gameForm.invalid" -->
                 <br />
                 {{gameForm.status}}
             </div>
