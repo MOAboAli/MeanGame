@@ -14,4 +14,10 @@ export class GamesService {
     return this.http.get<Game[]>("http://localhost:8484/api/games");
   }
 
+
+  public getOneGames(_id: string): Observable<Game> {
+    console.log("http://localhost:8484/api/games/" + _id)
+    return this.http.get<Game>("http://localhost:8484/api/games/" + _id);
+  }
+
 }

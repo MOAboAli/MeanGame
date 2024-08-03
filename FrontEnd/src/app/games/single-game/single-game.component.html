@@ -1,1 +1,119 @@
-<p>single-game works!</p>
+<back-button></back-button>
+
+
+<loading-symbol *ngIf="loading"></loading-symbol>
+
+<div class="row p-3">
+    <div class="col-md-12 col-sm-12 col-12">
+        <h3>Game ID: {{Game?._id}}</h3>
+    </div>
+</div>
+<br />
+<div class="row p-3">
+    <div class="col-md-6 col-sm-12 col-12">
+        <b>Title:</b><br />
+        {{Game?.title}}
+    </div>
+    <div class="col-md-6 col-sm-12 col-12">
+        <b>Year:</b><br />
+        {{Game?.year}}
+    </div>
+</div>
+<div class="row p-3">
+    <div class="col-md-6 col-sm-12 col-12">
+        <b>Price:</b><br />
+        {{ Game?.price | currency }}
+    </div>
+    <div class="col-md-6 col-sm-12 col-12">
+        <b>Rate:</b><br />
+        <start-rating [rating]=Game?.rate!></start-rating>
+    </div>
+</div>
+<div class="row p-3">
+    <div class="col-md-6 col-sm-12 col-12">
+        <b>Players:</b><br />
+        {{Game?.minPlayers}} - {{Game?.maxPlayers}}
+    </div>
+    <div class="col-md-6 col-sm-12 col-12">
+        <b>Age Allowed:</b><br />
+        > {{ Game?.minAge}}
+    </div>
+</div>
+<div class="row p-3">
+    <div class="col-md-6 col-sm-12 col-12">
+        <b>Designer:</b><br />
+        {{Game?.designers}}
+    </div>
+
+</div>
+<hr />
+<div class="row p-3">
+    <div class="col-md-12 col-sm-12 col-12">
+        <h3>Publisher</h3>
+        <div *ngIf="!Game?.publisher">
+            <br /><br />
+            No publisher Data was Found.
+        </div>
+    </div>
+</div>
+
+
+<div class="row p-3" *ngIf="Game?.publisher">
+    <div class="col-md-6 col-sm-12 col-12">
+        <b>Name:</b><br />
+        {{Game?.publisher?.name}}
+    </div>
+    <div class="col-md-6 col-sm-12 col-12">
+        <b>Country:</b><br />
+        {{Game?.publisher?.country}}
+    </div>
+</div>
+
+<div class="row p-3" *ngIf="Game?.publisher">
+    <div class="col-md-6 col-sm-12 col-12">
+        <b>Established:</b><br />
+        {{Game?.publisher?.established}}
+    </div>
+    <div class="col-md-6 col-sm-12 col-12">
+        <b>Location:</b><br />
+        <a [href]="getGoogleMapsLink()" target="_blank">
+            Link to Maps</a>
+
+    </div>
+</div>
+<hr />
+<div class="row p-3">
+    <div class="col-md-12 col-sm-12 col-12">
+        <h3>Reviews</h3>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-12">
+        <table class="table table-striped table-responsive">
+            <thead class="thead-dark">
+                <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col">Title</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col">review</th>
+                    <th scope="col">postDate</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let data of Game?.reviews">
+                    <!-- <td>{{data._id}}</td> -->
+                    <td>{{data.title}}</td>
+                    <td><start-rating [rating]=data.rating!></start-rating></td>
+                    <td>{{data.review}}</td>
+                    <td>{{data.postDate | date}} </td>
+
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,10 +1,13 @@
 <div class="row">
-    <div class="col-md-12 col-sm-12 col-12 p-2">
+    <div class="col-md-6 col-sm-12 col-12 p-2">
         <h3>List of All Games</h3>
-        <hr />
+
+    </div>
+    <div class="col-md-6 col-sm-12 col-12 p-2 text-end">
+        <a href="/games/Create" class="btn btn-primary">Create New Game</a>
     </div>
 </div>
-
+<hr />
 
 <div *ngIf="loading$ | async;">
     <div class="row">
@@ -39,19 +42,27 @@
 
                 </div>
                 <div class="d-flex justify-content-between align-items-center p-3">
-                    <small class="text-body-secondary">
+                    <small class="text-body-secondary" *ngIf="game.publisher ">
                         <span>
-                            <b>publisher:</b><br />{{game.publisher?.name}}
+                            <b>publisher:</b><br />{{game.publisher.name}}
                         </span>
                     </small>
-                    <small class="text-body-secondary">{{game.rate}}</small>
+                    <small class="text-body-secondary" *ngIf="!game.publisher ">
+                        <span>
+                            <b>No publisher</b><br />
+                        </span>
+                    </small>
+                    <small class="text-body-secondary">
+                        {{game.rate}}
+                        <start-rating [rating]=game.rate!></start-rating>
+                    </small>
 
                 </div>
                 <br />
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                        <a href="/games/game/{{game._id}}" class="btn btn-sm btn-outline-secondary">View</a>
+                        <a href="/games/game/{{game._id}}" class="btn btn-sm btn-outline-secondary">Edit</a>
                     </div>
                     <small class="text-body-secondary">{{game.year}}</small>
 

@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { GamesService } from './_services/Games.service';
 import { Game } from './_classes/game.model';
 import { delay, Observable, of, switchMap, tap } from 'rxjs';
+import { StartRatingComponent } from "../_utility_components/start-rating/start-rating.component";
 
 
 
@@ -11,7 +12,7 @@ import { delay, Observable, of, switchMap, tap } from 'rxjs';
 @Component({
   selector: 'app-games',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, StartRatingComponent],
   templateUrl: './games.component.html'
 })
 export class GamesComponent implements OnInit {
@@ -25,21 +26,9 @@ export class GamesComponent implements OnInit {
 
     this.loading$ = of(true);
     this.gamelist = of(null).pipe(
-
-      delay(2000),  // Simulate a delay
+      delay(500),
       switchMap(() => this.gamesService.getGames()),
-      tap(() => this.loading$ = of(false))  // Set loading to false once data is fetched
+      tap(() => this.loading$ = of(false))
     );
-
-
-    // setTimeout(() => {
-    //   this.gamesService.getGames().subscribe(games => {
-    //     this.gamelist = games;
-    //   });
-    // }, 8000);
-
-
-
-
   }
 }
