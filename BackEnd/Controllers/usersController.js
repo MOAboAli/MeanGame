@@ -9,8 +9,7 @@ require("dotenv").config()
 const _UserObject = function (req, hashedPWD) {
     return new Promise((resolve, reject) => {
         const user = {
-            "name": req.body.name,
-            "username": req.body.username,
+            ...req.body,
             "password": hashedPWD
         }
         resolve(user)
