@@ -9,8 +9,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, FooterComponent, HomeComponent, HeaderComponent, CommonModule],
-  templateUrl: './app.component.html',
-  // styleUrl: './app.component.css'
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'angular-app-001';

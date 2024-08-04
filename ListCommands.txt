@@ -1,11 +1,16 @@
 Angluar
 
 ng new first-app --skip-git=true --skip-tests=true –-directory public\first-app –-defaults=true
+ng new FrontEnd  --skip-git=true --skip-tests=true
 
+npm install bootstrap
+<link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+
+----------------------------------------------------------------------------------------------
 NodeJS
 npm init
 
-
+----------------------------------------------------------------------------------------------
 MongoDB
 
 Import:
